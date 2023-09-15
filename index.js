@@ -5,7 +5,11 @@ const { Deta } = require("deta");
 const deta = Deta();
 const db = deta.Base("notes");
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: (process.env.NODE_ENV === 'development')
+    ? '*' 
+    : 'https://bessonv.github.io/react-note-app/'
+}));
 app.use(express.json());
 
 app.get("/", (req, res) => res.send("Hello World!"));

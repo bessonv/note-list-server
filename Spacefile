@@ -4,6 +4,8 @@ micros:
   - name: note-list-server
     src: ./
     engine: nodejs16
+    presets:
+      api_keys: true
     primary: true
-    run: node index.js
-    dev: node index.js
+    run: npm run start
+    dev: npm run dev
