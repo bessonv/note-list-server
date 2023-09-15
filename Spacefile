@@ -7,5 +7,5 @@ micros:
     presets:
       api_keys: true
     primary: true
-    run: npm run start
+    run: node index.js
     dev: npm run dev
