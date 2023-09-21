@@ -12,7 +12,11 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req, res) => {
   const { name, description, created } = req.body;
-  const toCreate = { name, description, created };
+  const toCreate = {
+    name,
+    description,
+    created: new Date(created).getTime()
+  };
   const insertedTodo = await db.put(toCreate);
   res.status(201).json(insertedTodo);
 });
@@ -39,7 +43,12 @@ router.get("/search/:str", async (req, res) => {
 router.put("/:id", async (req, res) => {
   const { id } = req.params;
   const { name, description, created } = req.body;
-  const toPut = { key: id, name, description, created };
+  const toPut = {
+    key: id,
+    name,
+    description,
+    created: new Date(created).getTime()
+  };
   const newItem = await db.put(toPut);
   return res.json(newItem);
 });
